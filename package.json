@@ -1,0 +1,20 @@
+{
+    "name": "@tolkam/react-modal-layer",
+    "version": "1.0.0",
+    "description": "Different layers with history support based on modal component",
+    "main": "src/index.tsx",
+    "license": "UNLICENSED",
+    "private": true,
+    "dependencies": {
+        "react": "^16.14",
+        "react-dom": "^16.14",
+        "@tolkam/react-modal": "file:D:/dev-packages/js/tolkam/react-modal",
+        "@tolkam/lib-utils-ui": "file:D:/dev-packages/js/tolkam/lib-utils-ui"
+    },
+    "devDependencies": {
+        "@types/react": "^16",
+        "@types/react-dom": "^16",
+        "tslib": "^2.1.0",
+        "typescript": "^4.1.3"
+    }
+}
