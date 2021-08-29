@@ -58,22 +58,23 @@ class Layer extends PureComponent<IProps, any> {
     public render() {
         const that = this;
         const props = that.props;
-        const mode = props.mode || 'overlay';
+        const mode = props.mode ?? 'overlay';
         const isPopup = mode === 'popup';
-        const baseClass = props.classPrefix || 'layer';
-        const modeClass = baseClass + '--' + mode;
+        const baseClass = props.classNameLayer ?? 'layer';
+        const baseModifiers = props.classModifiersPrefix ?? '';
+        const modeClass = baseModifiers + '-' + mode;
         const { footerChildren, headerChildren, busy, busyElement } = props;
 
-        const modeModifiers = (props.modifiers || []).map((m) => modeClass + '-' + m);
+        const modeModifiers = (props.modifiers || []).map((m) => ((props.classModesPrefix ?? modeClass) + '-' + m));
 
         const modalProps = {
             ...props,
             className: classNames(baseClass, modeClass, modeModifiers, {
-                [baseClass + '--with-header']: !!headerChildren,
-                [baseClass + '--with-footer']: !!footerChildren,
+                [baseModifiers + '-with-header']: !!headerChildren,
+                [baseModifiers + '-with-footer']: !!footerChildren,
             }, props.className),
-            classNameBackdrop: baseClass + '__backdrop',
-            classNameBody: baseClass + '__body',
+            classNameBackdrop: props.classNameBackdrop ?? 'backdrop',
+            classNameBody: props.classNameBody ?? 'body',
             noBackdrop: isPopup,
             allowScroll: isPopup,
             withDocumentClicks: isPopup,
@@ -82,12 +83,12 @@ class Layer extends PureComponent<IProps, any> {
         };
 
         return <Modal {...modalProps}>
-            {headerChildren && <div className={baseClass + '__header'}>{headerChildren}</div>}
-            <div className={baseClass + '__contents'}>
+            {headerChildren && <div className={props.classNameHeader ?? 'header'}>{headerChildren}</div>}
+            <div className={props.classNameContents ?? 'contents'}>
                 {(busy && busyElement) && busyElement}
                 {!(busy && !props.keepChildrenOnBusy) && props.children}
             </div>
-            {footerChildren && <div className={baseClass + '__footer'}>{footerChildren}</div>}
+            {footerChildren && <div className={props.classNameFooter ?? 'footer'}>{footerChildren}</div>}
         </Modal>;
     }
 
@@ -220,9 +221,12 @@ interface IProps extends IPropsModal {
     // footer contents
     footerChildren?: ReactNode;
 
-
-    // modes class prefix
-    classPrefix?: string;
+    classNameLayer?: string;
+    classNameHeader?: string;
+    classNameContents?: string;
+    classNameFooter?: string;
+    classModesPrefix?: string;
+    classModifiersPrefix?: string;
 }
 
 export default Layer;
