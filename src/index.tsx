@@ -4,7 +4,7 @@ import { classNames } from '@tolkam/lib-utils-ui';
 
 const WINDOW = window;
 const HISTORY = WINDOW.history;
-const HISTORY_NS = 'ULayer';
+const HISTORY_NS = 'TkmLayer';
 
 /**
  * Next level
@@ -75,9 +75,9 @@ class Layer extends PureComponent<IProps, any> {
             }, props.className),
             classNameBackdrop: props.classNameBackdrop ?? 'backdrop',
             classNameBody: props.classNameBody ?? 'body',
-            noBackdrop: isPopup,
-            allowScroll: isPopup,
-            withDocumentClicks: isPopup,
+            noBackdrop: props.noBackdrop ?? isPopup,
+            allowScroll: props.allowScroll ?? isPopup,
+            withDocumentClicks: props.withDocumentClicks ?? isPopup,
             onOpen: that.onOpen,
             onClose: that.onClose,
         };
