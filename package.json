@@ -4,15 +4,15 @@
     "main": "src/index.tsx",
     "license": "UNLICENSED",
     "dependencies": {
-        "@tolkam/react-modal": "^1.0.0",
+        "@tolkam/react-modal": "^1.1.0",
         "@tolkam/lib-utils-ui": "^0.1.0"
     },
     "peerDependencies": {
-        "react": "^16.14"
+        "react": "^18"
     },
     "devDependencies": {
-        "@types/react": "^16",
-        "@types/react-dom": "^16",
-        "tslib": "^2.1.0"
+        "@types/react": "^18",
+        "@types/react-dom": "^18",
+        "tslib": "^2.4.0"
     }
 }
