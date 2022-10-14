@@ -1,6 +1,7 @@
 {
     "name": "@tolkam/react-modal-layer",
     "description": "Predefined modal window scenarios with history support",
+    "version": "0.0.0",
     "main": "src/index.tsx",
     "license": "UNLICENSED",
     "dependencies": {
